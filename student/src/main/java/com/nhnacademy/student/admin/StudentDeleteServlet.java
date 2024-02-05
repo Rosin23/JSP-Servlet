@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 @Slf4j
-@WebServlet(name = "studentDeleteServlet", urlPatterns = "/student/delete")
+@WebServlet(urlPatterns = "/student/delete")
 public class StudentDeleteServlet extends HttpServlet {
 
     private StudentRepository studentRepository;
@@ -30,8 +30,10 @@ public class StudentDeleteServlet extends HttpServlet {
         if (Objects.isNull(id)) {
             throw new RuntimeException("id");
         }
+        log.error("id:{}",id);
         studentRepository.deleteById(id);
-        //todo /student/list <-- redirect
-        resp.sendRedirect("/student/list");
+        //resp.sendRedirect("/student/list");
+        //todo view attribute - redirect:/student/list.jsp
+        req.setAttribute("view","redirect:/student/list.do");
     }
 }

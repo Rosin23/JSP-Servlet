@@ -10,12 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.rmi.StubNotFoundException;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Slf4j
-@WebServlet(name = "studentViewServlet", urlPatterns = "/student/view")
+@WebServlet(urlPatterns = "/student/view")
 public class StudentViewServlet extends HttpServlet {
     private StudentRepository studentRepository;
+
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -32,17 +35,15 @@ public class StudentViewServlet extends HttpServlet {
 
         Student student = studentRepository.getStudentById(id);
         if(Objects.isNull(student)) {
-
+            throw new StubNotFoundException(id);
         }
         log.error("student:{}",student);
         req.setAttribute("student", student);
-
-        //todo student 조회
-
+        /*
         RequestDispatcher rd = req.getRequestDispatcher("/student/view.jsp");
         rd.forward(req,resp);
-
-        //todo /student/view.jsp <-- forward
+         */
+        //todo view attribute 설정 - /student/view.jsp
+        req.setAttribute("view","redirect:/student/view.do");
     }
-
 }

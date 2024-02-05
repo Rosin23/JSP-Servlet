@@ -1,5 +1,6 @@
 package com.nhnacademy.student.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -31,6 +32,7 @@ public class MapStudentRepository implements StudentRepository{
     @Override
     public List<Student> getStudents() {
         return studentsMap.values().stream().collect(Collectors.toList());
+        //return new ArrayList<Student>(studentsMap.values());
     }
 
     @Override

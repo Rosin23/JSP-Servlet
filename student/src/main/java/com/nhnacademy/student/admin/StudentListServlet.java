@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@WebServlet(name = "studentListServlet", urlPatterns = "/student/list")
+@WebServlet(urlPatterns = "/student/list")
 public class StudentListServlet extends HttpServlet {
 
     private StudentRepository studentRepository;
@@ -31,8 +31,12 @@ public class StudentListServlet extends HttpServlet {
         List<Student> studentList = studentRepository.getStudents();
         req.setAttribute("studentList",studentList);
 
-        // /student/list.jsp <- forward 하기
+
+        /*
         RequestDispatcher rd = req.getRequestDispatcher("/student/list.jsp");
         rd.forward(req, resp);
+        */
+         //todo view attribute - /student/list.jsp
+        req.setAttribute("view","redirect:/student/list.do");
     }
 }

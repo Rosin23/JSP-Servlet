@@ -24,10 +24,10 @@ action = /student/update
 <body>
 <c:choose>
     <c:when test="${empty student}">
-        <c:set var="action" value="/student/register" />
+        <c:set var="action" value="/student/register.do" />
     </c:when>
     <c:otherwise>
-        <c:set var="action" value="/student/update" />
+        <c:set var="action" value="/student/update.do" />
     </c:otherwise>
 </c:choose>
 
