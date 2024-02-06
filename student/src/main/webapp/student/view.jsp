@@ -35,7 +35,7 @@
         </tr>
         <tr>
             <td style="width: 30%" >등록일</td>
-            <td style="width: 70%" ></td>
+            <td style="width: 70%" >${cfmt:formatDate(student.createdAt, 'yyyy-MM-dd HH:mm:ss')}</td>
         </tr>
 
     </tbody>
