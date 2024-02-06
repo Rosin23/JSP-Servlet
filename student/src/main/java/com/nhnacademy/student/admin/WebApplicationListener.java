@@ -15,7 +15,7 @@ public class WebApplicationListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext context = sce.getServletContext();
-        StudentRepository studentRepository = new MapStudentRepository();
+        StudentRepository studentRepository = new JsonStudentRepository();
 
         //List<Student> studentList = new ArrayList<>();
         for(int i=1; i<=10; i++){
