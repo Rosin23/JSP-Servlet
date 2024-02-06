@@ -20,7 +20,7 @@ public class FrontServlet extends HttpServlet {
         //todo 공통 처리 - 응답 content-type, character encoding 지정.
 
         resp.setCharacterEncoding("UTF-8");
-        resp.setContentType("html/text");
+        resp.setContentType("text/html");
 
         try{
             //실제 요청 처리할 servlet을 결정
@@ -38,7 +38,7 @@ public class FrontServlet extends HttpServlet {
             } else {
                 //redirect 아니면 JSP에게 view 처리를 위임하여 그 결과를 include시킴.
                 rd = req.getRequestDispatcher(view);
-                rd.include(req,resp);
+                rd.forward(req,resp);
             }
         }catch(Exception ex){
             //공통 error 처리 - ErrorServlet 참고해서 처리

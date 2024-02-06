@@ -16,7 +16,7 @@
 <body>
 <table>
     <tbody>
-
+    <c:forEach var="student" items="${studentList}"></c:forEach>
         <tr>
             <td style="width: 30%" >아이디</td>
             <td style="width: 70%" >${student.id}</td>

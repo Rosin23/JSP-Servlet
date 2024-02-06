@@ -35,7 +35,7 @@ public class StudentViewServlet extends HttpServlet {
 
         Student student = studentRepository.getStudentById(id);
         if(Objects.isNull(student)) {
-            throw new StubNotFoundException(id);
+            throw new NullPointerException(id);
         }
         log.error("student:{}",student);
         req.setAttribute("student", student);
@@ -44,6 +44,6 @@ public class StudentViewServlet extends HttpServlet {
         rd.forward(req,resp);
          */
         //todo view attribute 설정 - /student/view.jsp
-        req.setAttribute("view","redirect:/student/view.do");
+        req.setAttribute("view","/student/view.jsp");
     }
 }

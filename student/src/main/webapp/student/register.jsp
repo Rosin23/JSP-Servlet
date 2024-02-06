@@ -34,6 +34,7 @@ action = /student/update
 <form method="post" action="${action}">
     <table>
         <tbody>
+        <c:forEach var="student" items="${studentList}"></c:forEach>
         <tr>
             <th>ID</th>
             <td><input type="text" name="id" value="${student.id}" required /></td>

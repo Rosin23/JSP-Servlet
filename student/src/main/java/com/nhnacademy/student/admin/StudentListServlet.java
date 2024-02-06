@@ -30,13 +30,12 @@ public class StudentListServlet extends HttpServlet {
 
         List<Student> studentList = studentRepository.getStudents();
         req.setAttribute("studentList",studentList);
-
-
         /*
         RequestDispatcher rd = req.getRequestDispatcher("/student/list.jsp");
         rd.forward(req, resp);
         */
          //todo view attribute - /student/list.jsp
-        req.setAttribute("view","redirect:/student/list.do");
+        req.setAttribute("view","/student/list.jsp");
+
     }
 }

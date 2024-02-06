@@ -35,7 +35,7 @@ public class StudentUpdateServlet extends HttpServlet {
         rd.forward(req,resp);
         */
         //todo view attribute 설정 - /student/register.jsp
-        req.setAttribute("view","redirect:/student/register.jsp");
+        req.setAttribute("view","/student/register.jsp");
     }
 
     @Override
@@ -67,6 +67,6 @@ public class StudentUpdateServlet extends HttpServlet {
 
         //todo /student/view?id=student1 <-- redirect
         //resp.sendRedirect("/student/view?id=student1");
-        req.setAttribute("view","redirect:/student/view?id="+student.getId());
+        req.setAttribute("view","/student/view.jsp?id=student1");
     }
 }

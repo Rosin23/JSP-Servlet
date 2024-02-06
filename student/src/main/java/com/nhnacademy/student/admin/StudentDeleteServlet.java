@@ -34,6 +34,6 @@ public class StudentDeleteServlet extends HttpServlet {
         studentRepository.deleteById(id);
         //resp.sendRedirect("/student/list");
         //todo view attribute - redirect:/student/list.jsp
-        req.setAttribute("view","redirect:/student/list.do");
+        req.setAttribute("view","/student/list.jsp");
     }
 }
