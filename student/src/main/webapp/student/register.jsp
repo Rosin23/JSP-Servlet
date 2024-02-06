@@ -34,6 +34,7 @@ action = /student/update
 <form method="post" action="${action}">
     <table>
         <tbody>
+        <c:forEach var="student" items="${studentList}"></c:forEach>
         <tr>
             <th>ID</th>
             <td><input type="text" name="id" value="${student.id}" required /></td>
@@ -46,7 +47,7 @@ action = /student/update
         <tr>
             <th>성별</th>
             <input type="radio" name="gender" value="M" ${student.gender eq 'M' ? 'checked' : '' } />남
-            <input type="radio" name="gender" value="M" ${student.gender eq 'F' ? 'checked' : '' } />여
+            <input type="radio" name="gender" value="F" ${student.gender eq 'F' ? 'checked' : '' } />여
         </tr>
         <tr>
             <th>나이</th>

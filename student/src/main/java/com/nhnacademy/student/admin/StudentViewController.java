@@ -12,10 +12,33 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.rmi.StubNotFoundException;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
 @WebServlet(urlPatterns = "/student/view")
+public class StudentViewController implements Command {
+    private StudentRepository studentRepository;
+    @Override
+    public String execute(HttpServletRequest req, HttpServletResponse resp) {
+        StudentRepository studentRepository = (StudentRepository) req.getServletContext().getAttribute("studentRepository");
+        //List<Student> studentList = studentRepository.getStudents();
+        String id = req.getParameter("id");
+        if (Objects.isNull(id)) {
+            throw new RuntimeException("parameter [id] : null");
+        }
+
+        Student student = studentRepository.getStudentById(id);
+        if(Objects.isNull(student)) {
+            throw new NullPointerException(id);
+        }
+        req.setAttribute("student", student);
+
+        return "/student/view.jsp";
+    }
+}
+
+/*
 public class StudentViewServlet extends HttpServlet {
     private StudentRepository studentRepository;
 
@@ -39,11 +62,9 @@ public class StudentViewServlet extends HttpServlet {
         }
         log.error("student:{}",student);
         req.setAttribute("student", student);
-        /*
-        RequestDispatcher rd = req.getRequestDispatcher("/student/view.jsp");
-        rd.forward(req,resp);
-         */
+
         //todo view attribute 설정 - /student/view.jsp
         req.setAttribute("view","redirect:/student/view.do");
     }
 }
+ */

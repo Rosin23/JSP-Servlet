@@ -8,7 +8,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/error")
+//@WebServlet(urlPatterns = "/error")
+public class ErrorController implements Command{
+    @Override
+    public String execute(HttpServletRequest req, HttpServletResponse resp) {
+        req.setAttribute("status_code", req.getAttribute(RequestDispatcher.ERROR_STATUS_CODE));
+        //todo exception_type
+        req.setAttribute("exception_type", req.getAttribute(RequestDispatcher.ERROR_EXCEPTION_TYPE));
+        //todo message
+        req.setAttribute("message", req.getAttribute(RequestDispatcher.ERROR_MESSAGE));
+        //todo exception
+        req.setAttribute("exception", req.getAttribute(RequestDispatcher.ERROR_EXCEPTION));
+        //todo request_uri
+        req.setAttribute("request_uri", req.getAttribute(RequestDispatcher.ERROR_REQUEST_URI));
+        return "/studnet/error.jsp";
+    }
+}
+
+
+/*
 public class ErrorServlet extends HttpServlet {
 
     @Override
@@ -29,3 +47,5 @@ public class ErrorServlet extends HttpServlet {
         rd.forward(req,resp);
     }
 }
+
+ */
